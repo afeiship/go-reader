@@ -16,7 +16,7 @@
       lines.push(inSpace + '+ **' + node.name + '**');
       items.forEach(function(item) {
         var children = item.children;
-        var spaces = inSpace + '  ';
+        var spaces = inSpace + '    ';
         if (children && children.length) {
           getLines(spaces, item);
         } else {
