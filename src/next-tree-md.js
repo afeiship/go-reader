@@ -25,7 +25,7 @@
       });
     };
     getLines('', root);
-    return lines.slice(1).join('\n');
+    return lines.join('\n');
   };
 
   if (typeof module !== 'undefined' && module.exports) {

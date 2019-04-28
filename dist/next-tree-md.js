@@ -10,7 +10,7 @@
   nx.treeMd = function(inPath, inOptions) {
     var options = nx.mix(DEFAULT_OPTIONS, inOptions);
     var root = dirTree(inPath, options);
-    var lines = [];
+    var lines = ['## menu'];
     var getLines = function(inSpace, node) {
       var items = node.children;
       lines.push(inSpace + '+ **' + node.name + '**');
@@ -25,7 +25,7 @@
       });
     };
     getLines('', root);
-    return lines.slice(1).join('\n');
+    return lines.join('\n');
   };
 
   if (typeof module !== 'undefined' && module.exports) {
