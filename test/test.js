@@ -1,15 +1,8 @@
 var nx = require('next-js-core2');
+var fs = require('fs');
 require('../src/next-tree-md');
 
-
-test('nx.treeMd', function () {
-  var obj1 = {name: 'fei'};
-  var obj2 = {email: '1290657123@qq.com'};
-
-  var result = {};
-
-  nx.treeMd(result, obj1, obj2);
-
-  expect(result.name, obj1.name).toBe(null);
+test('nx.treeMd', function() {
+  var rs = nx.treeMd('./test/demo');
+  fs.writeFileSync('./test/output_script.md', rs);
 });
-

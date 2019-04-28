@@ -1,7 +1,7 @@
 {
   "name": "next-tree-md",
   "version": "1.0.0",
-  "description": "Create tree md string",
+  "description": "Create tree md string.",
   "homepage": "https://github.com/afeiship/next-tree-md",
   "author": {
     "name": "afei",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "directory-tree": "^2.2.1",
-    "next-js-core2": "github:afeiship/next-js-core2"
+    "next-js-core2": "github:afeiship/next-js-core2",
+    "next-repeat": "github:afeiship/next-repeat"
   }
 }
