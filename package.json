@@ -6,5 +6,12 @@
   "license": "MIT",
   "scripts": {
     "test": "go test __tests__/*.go -v"
-  }
+  },
+  "keywords": [
+    "file",
+    "golang",
+    "http",
+    "local",
+    "reader"
+  ]
 }
