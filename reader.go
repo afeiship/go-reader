@@ -14,8 +14,8 @@ type FileReader struct {
 	reader io.Reader
 }
 
-// NewFileReader 创建 FileReader，根据传入的类型动态选择读取方式
-func NewFileReader(fileType string, source string) (*FileReader, error) {
+// NewReader 创建 FileReader，根据传入的类型动态选择读取方式
+func NewReader(fileType string, source string) (*FileReader, error) {
 	var reader io.Reader
 	var err error
 
