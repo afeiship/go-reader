@@ -30,6 +30,8 @@ func NewReader(opts *Options) (*FileReader, error) {
 	}
 
 	switch opts.Type {
+	case "reader":
+		reader = opts.Source.(io.Reader)
 	case "file":
 		reader, err = createLocalFileReader(opts.Source.(string))
 	case "http":
@@ -87,7 +89,7 @@ func createBytesReader(data []byte) io.Reader {
 
 func isValideFileType(fileType string) bool {
 	switch fileType {
-	case "file", "http", "base64", "bytes":
+	case "file", "http", "base64", "bytes", "reader":
 		return true
 	default:
 		return false
