@@ -11,18 +11,15 @@ go get -u github.com/afeiship/go-reader
 package main
 
 import (
-  "fmt"
-  "github.com/afeiship/go-reader"
+	"fmt"
+	"io"
+	"github.com/afeiship/go-reader"
 )
 
 func main() {
-  // type: "file", "http", "base64"
-  r := reader.NewReader("file","README.md")
-  content, err := r.Read()
-  if err!= nil {
-    fmt.Println(err)
-    return
-  }
-  fmt.Println(string(content))
+    // type: "file", "http", "base64"
+    fileReader, _ := reader.NewReader("file", "file.txt")
+    data, _ := io.ReadAll(fileReader)
+    fmt.Println(string(data))
 }
 ```
