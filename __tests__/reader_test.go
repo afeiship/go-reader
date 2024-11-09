@@ -50,3 +50,16 @@ func TestBase64Reader(f *testing.T) {
 		io.Copy(os.Stdout, base64FileReader)
 	}
 }
+
+func TestBytesReader(f *testing.T) {
+	opts := reader.Options{
+		Type:   "bytes",
+		Source: []byte("This is a byte slice for the bytes reader."),
+	}
+	bytesFileReader, err := reader.NewReader(&opts)
+	if err != nil {
+		fmt.Println("Error reading bytes file:", err)
+	} else {
+		io.Copy(os.Stdout, bytesFileReader)
+	}
+}
