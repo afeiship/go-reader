@@ -10,7 +10,11 @@ import (
 )
 
 func TestLocalReader(f *testing.T) {
-	localFileReader, err := reader.NewReader("file", "hello.txt")
+	opts := reader.Options{
+		Type:   "file",
+		Source: "hello.txt",
+	}
+	localFileReader, err := reader.NewReader(&opts)
 	if err != nil {
 		fmt.Println("Error reading local file:", err)
 	} else {
@@ -19,7 +23,11 @@ func TestLocalReader(f *testing.T) {
 }
 
 func TestHttpReader(f *testing.T) {
-	httpFileReader, err := reader.NewReader("http", "https://web-assets.alo7.com/assets/text/hello.txt")
+	opts := reader.Options{
+		Type:   "http",
+		Source: "https://web-assets.alo7.com/assets/text/hello.txt",
+	}
+	httpFileReader, err := reader.NewReader(&opts)
 	if err != nil {
 		fmt.Println("Error reading http file:", err)
 	} else {
@@ -29,8 +37,13 @@ func TestHttpReader(f *testing.T) {
 
 // b64Str := "SGVsbG8gd29ybGQh" // "Hello world!" 的 Base64 编码
 func TestBase64Reader(f *testing.T) {
-	b64Str := "SGVsbG8gd29ybGQh"
-	base64FileReader, err := reader.NewReader("base64", b64Str)
+	// b64Str := "SGVsbG8gd29ybGQh"
+	// base64FileReader, err := reader.NewReader("base64", b64Str)
+	opts := reader.Options{
+		Type:   "base64",
+		Source: "SGVsbG8gd29ybGQh",
+	}
+	base64FileReader, err := reader.NewReader(&opts)
 	if err != nil {
 		fmt.Println("Error reading base64 file:", err)
 	} else {

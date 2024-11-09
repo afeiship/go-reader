@@ -18,7 +18,11 @@ import (
 
 func main() {
     // type: "file", "http", "base64"
-    fileReader, _ := reader.NewReader("file", "file.txt")
+    opts := reader.Options{
+        Type: "file",
+        Source: "file.txt",
+    }
+    fileReader, _ := reader.NewReader(&opts)
     data, _ := io.ReadAll(fileReader)
     fmt.Println(string(data))
 }
