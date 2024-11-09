@@ -14,18 +14,28 @@ type FileReader struct {
 	reader io.Reader
 }
 
+// ReaderOptions 结构体封装了读取文件所需的配置信息
+type ReaderOptions struct {
+	fileType string
+	source   string
+}
+
 // NewReader 创建 FileReader，根据传入的类型动态选择读取方式
-func NewReader(fileType string, source string) (*FileReader, error) {
+func NewReader(opts *ReaderOptions) (*FileReader, error) {
 	var reader io.Reader
 	var err error
 
-	switch fileType {
+	if !isValideFileType(opts.fileType) {
+		return nil, errors.New("unsupported file type")
+	}
+
+	switch opts.fileType {
 	case "file":
-		reader, err = createLocalFileReader(source)
+		reader, err = createLocalFileReader(opts.source)
 	case "http":
-		reader, err = createHttpFileReader(source)
+		reader, err = createHttpFileReader(opts.source)
 	case "base64":
-		reader, err = createB64FileReader(source)
+		reader, err = createB64FileReader(opts.source)
 	default:
 		err = errors.New("unsupported file type")
 	}
@@ -67,6 +77,15 @@ func createB64FileReader(b64 string) (io.Reader, error) {
 		return nil, err
 	}
 	return bytes.NewReader(data), nil
+}
+
+func isValideFileType(fileType string) bool {
+	switch fileType {
+	case "file", "http", "base64":
+		return true
+	default:
+		return false
+	}
 }
 
 // Read 实现 io.Reader 接口方法，读取 FileReader 中的数据
