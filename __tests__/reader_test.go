@@ -11,7 +11,7 @@ import (
 
 func TestLocalReader(f *testing.T) {
 	opts := reader.Options{
-		Type:   "file",
+		Type:   reader.File,
 		Source: "hello.txt",
 	}
 	localFileReader, err := reader.NewReader(&opts)
@@ -24,7 +24,7 @@ func TestLocalReader(f *testing.T) {
 
 func TestHttpReader(f *testing.T) {
 	opts := reader.Options{
-		Type:   "http",
+		Type:   reader.Http,
 		Source: "https://web-assets.alo7.com/assets/text/hello.txt",
 	}
 	httpFileReader, err := reader.NewReader(&opts)
@@ -40,7 +40,7 @@ func TestBase64Reader(f *testing.T) {
 	// b64Str := "SGVsbG8gd29ybGQh"
 	// base64FileReader, err := reader.NewReader("base64", b64Str)
 	opts := reader.Options{
-		Type:   "base64",
+		Type:   reader.Base64,
 		Source: "SGVsbG8gd29ybGQh",
 	}
 	base64FileReader, err := reader.NewReader(&opts)
@@ -53,7 +53,7 @@ func TestBase64Reader(f *testing.T) {
 
 func TestBytesReader(f *testing.T) {
 	opts := reader.Options{
-		Type:   "bytes",
+		Type:   reader.Bytes,
 		Source: []byte("This is a byte slice for the bytes reader."),
 	}
 	bytesFileReader, err := reader.NewReader(&opts)
