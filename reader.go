@@ -36,7 +36,7 @@ func NewReader(opts *Options) (*FileReader, error) {
 	var err error
 
 	if !isValideFileType(opts.Type) {
-		return nil, errors.New("unsupported file type")
+		return nil, errors.New("unsupported file type, please use reader.File, reader.Http, reader.Base64, reader.Bytes or reader.Reader")
 	}
 
 	switch opts.Type {
